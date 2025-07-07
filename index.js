@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 // Conectar a MongoDB
-mongoose.connect('process.env.MOGODB_URI')
+mongoose.connect( process.env.MONGODB_URI)
     .then(() => console.log('✅ Conectado a MongoDB correctamente'))
     .catch(err => console.error('❌ Error al conectar a MongoDB:', err));
 
@@ -22,7 +22,7 @@ app.use('/api/cursos', cursosRoutes);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Servidor Express
-const PORT = PROCESS.ENV.PORT ||3000;
+const PORT = process.env.PORT ||3000;
 app.listen(PORT, () => {
     console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
 });
